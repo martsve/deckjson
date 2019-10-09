@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import { useDispatch } from "react-redux";
 import CounterWidget from './CounterWidget';

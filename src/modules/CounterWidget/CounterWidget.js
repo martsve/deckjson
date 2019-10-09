@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 const CounterWidget = ({ count, setCounter }) => {
   function increase() {
