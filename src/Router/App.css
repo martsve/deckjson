@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -29,6 +39,13 @@ nav a.active {
 
 nav a:hover {
   background: #ddd !important;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+section:last-child {
+  margin-bottom: unset;
 }
 
 .Body {
@@ -91,6 +108,35 @@ h1,h2,h3,h4,h5,h6 {
 
 .error {
   color: red;
+}
+
+.tiles {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+}
+
+.tile {
+  width: 150px;
+  height: 150px;
+
+  padding: 1rem; 
+  background: #eef;
+  border: 1px solid #ccc;
+  margin: 5px;
+
+  flex: 0 0 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+.tile span {
+  flex: 1 0 auto;
+  text-align: center;
+  vertical-align: middle;
 }
 
 @media (max-width: 700px) {

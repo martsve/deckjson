@@ -35,8 +35,8 @@ const CreateDeckFromCsv = (text, name) => {
     var card = {
       name: get("Name"),
       count: get("QuantityX", x => parseInt(x.replace('x', ''))),
-      edition: get("Edition code"),
-      collectorNumber: get("Collector's number"),
+      set: get("Edition code"),
+      number: get("Collector's number"),
       foil: get("Foil", x => x === "Foil"),
       price: get("Price (total)", x => parseFloat(x)),
       currency: get("Currency"),

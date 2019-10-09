@@ -60,21 +60,29 @@ const ViewDeck = ({ history, match, decks, view }) => {
     SaveAsFile(JSON.stringify(deck), deck.name + ".json");
   }
 
+  function exportText() {
+    SaveAsFile(deck.cards.map(x => (x.sideboard ? "SB: " : "") + x.count + ' ' + x.name).join('\n'), deck.name + ".txt");
+  }
+
   function exportMtgoText() {
-    SaveAsFile(deck.cards.map(x => x.count + ' ' + x.name).join('\n'), deck.name + ".txt");
+    SaveAsFile(deck.cards.map(x => (x.sideboard ? "SB: " : "") + x.count + ' ' + x.name + (x.set && x.number ? (" ("+x.set+") " + x.number) : "")).join('\n'), deck.name + ".dek");
   }
 
   return (
     <>
-    <h1>View deck</h1>
+    <h1>{deck.name}</h1>
 
     <div className='buttons'>
     <button onClick={exportJson}>
       Export deck as JSON
     </button>
 
+    <button onClick={exportText}>
+      Export deck as text file
+    </button>
+    
     <button onClick={exportMtgoText}>
-      Export deck as MTGO text file
+      Export deck as MTGO .dek
     </button>
     </div>
 

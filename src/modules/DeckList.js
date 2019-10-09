@@ -5,16 +5,11 @@ import CW from './CounterWidget/CW';
 import DeckParse from './DeckParse';
 import ViewDeck from './ViewDeck';
 import NotFound from './ErrorPages';
+import Overview from './Overview';
 
 const Liste = ({ list }) => {
   return (
     <ul>
-      <li key="import">
-      <NavLink activeClassName='active' to="/decks/import">
-        <span className='title'>Import deck</span>           
-      </NavLink>
-      </li>
-
       {Object.entries(list).map( ([key, value]) => (
       <li key={key}>
         <NavLink activeClassName='active' to={"/decks/" + value.id}>
@@ -22,11 +17,15 @@ const Liste = ({ list }) => {
         </NavLink>
       </li>
       ))}
+      
+      <li key="import">
+      <NavLink activeClassName='active' to="/decks/import">
+        <span className='title'>+ Import</span>           
+      </NavLink>
+      </li>
     </ul>
   );
 }
-
-const IndexPage = () => (<h1>Index</h1>);
 
 const DeckList = ({ decks }) => {
   return (
@@ -39,7 +38,7 @@ const DeckList = ({ decks }) => {
         <Route path="/decks/import" component={DeckParse} />
         <Route path="/decks/cw" component={CW} />
         <Route path="/decks/:id" component={ViewDeck} />
-        <Route path="/decks" component={IndexPage} />
+        <Route path="/decks" component={Overview} />
         <Route component={NotFound} />
       </Switch>
     </div>

@@ -1,4 +1,4 @@
-import { CreateDeckFromCsv, CreateDeckFromJson, CreateDeckFromTxt } from '.'
+import { CreateDeckFromCsv, CreateDeckFromJson, CreateDeckFromTxt, CreateDeckFromDek } from '.'
 
 const CreateDeckFrom = (text, type, name) => {
   if (type === "csv") {
@@ -8,10 +8,17 @@ const CreateDeckFrom = (text, type, name) => {
     };
   }
 
-  if (type === "txt") {
+  if (type === "txt" ) {
     return {
       success: true,
       deck: CreateDeckFromTxt(text, name)
+    };
+  }
+
+  if (type === "dec" || type === "dek") {
+    return {
+      success: true,
+      deck: CreateDeckFromDek(text, name)
     };
   }
 

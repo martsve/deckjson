@@ -51,7 +51,7 @@ const DeckParse = ({ history }) => {
 
   return (
     <>
-    <h1>Parse deck</h1>
+    <h1>Import a new deck</h1>
     <form key='inputform' action='#' onSubmit={() => false}>
       <input key='fileinput' type='file' id='fileinput' onChange={readFile} />
     </form>
@@ -60,7 +60,7 @@ const DeckParse = ({ history }) => {
       <input value={name} onChange={e => changeName(e.target.value)} />
 
       <button onClick={saveDeck}>
-        Save deck
+        Save to collection
       </button>
 
       <pre>{JSON.stringify(deck, null, 2)}</pre>

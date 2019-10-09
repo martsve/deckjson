@@ -12,6 +12,14 @@ function GetFilenameType(filename) {
     return "txt";
   }
 
+  if (filename.toLowerCase().endsWith('.dec')) {
+    return "dec";
+  }
+
+  if (filename.toLowerCase().endsWith('.dek')) {
+    return "dek";
+  }
+
   return null;
 }
 

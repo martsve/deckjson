@@ -18,7 +18,6 @@ const getInitialState = () => {
 
 export const reducer = (state = getInitialState(), action) => {
   const newState = reduceState(state, action);
-  console.log('reducer', { state, action} , newState);
   localStorage.setItem(LOCALSTORAGEKEY, JSON.stringify(newState));
   return newState;
 }

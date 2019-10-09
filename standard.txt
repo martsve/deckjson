@@ -1,0 +1,27 @@
+17 Plains
+3x Nomads en-Kor
+3x Paladin en-Vec
+4 Soltari Monk
+4 Soltari Priest
+1 Soltari Visionary
+4 Soul Warden
+4 Warrior en-Kor
+4 White Knight
+1 Aura of Silence
+4 Cataclysm
+3 Disempower
+4 Empyrial Armor
+4 Tithe
+SB: 3 Abeyance
+SB: 2 Armageddon
+SB: 3 Aura of Silence
+SB: 3 Cursed Scroll
+SB: 1 Disenchant
+SB: 3 Spirit Link
+
+Maybeboard
+50 Tithe
+20 Plains
+
+Sideboard
+4 Empyrial Armor
