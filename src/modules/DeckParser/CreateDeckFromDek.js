@@ -4,7 +4,7 @@ const CreateDeckFromDek = (text, name) => {
   var lines = text.trim().replace(/\r/ig, '').replace(/\t/ig, ' ').replace(/ +/ig, ' ').split('\n');
 
   var cards = lines.map(x => {
-    if (x.startsWith('//') || x.length == 0) {
+    if (x.startsWith('//') || x.length === 0) {
       return null;
     }
 

@@ -29,9 +29,10 @@ const DeckParse = ({ history }) => {
     if (file) {
       var fr = new FileReader();
       fr.onload = (e) => {
-        setName(file.name);
         setData(e.target.result);
         setType(GetFilenameType(file.name));
+        setName(file.name);
+        setDeck(null);
       };
       fr.readAsText(file);
     }

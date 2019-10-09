@@ -31,6 +31,7 @@ const CreateDeckFromTxt = (text, name) => {
     parts.shift();
     var name = parts.join(' ');
     var match = name.match(/(.*?) \(([a-z]+)\) ([a-z0-9]+)$/i);
+
     if (match) {
       name = match[1];
       edition = match[2];
