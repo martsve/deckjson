@@ -1,17 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-
+import { GetDeckIdentityClass } from './utilities';
 const Liste = ({ list }) => {
-  return Object.entries(list.slice(0,5)).map( ([key, value]) => (
-    <Link className='tile' key={key} to={"/decks/" + value.id}>
-      <span className='title'>
-        <span className='icon-picture large'></span>
-        <br /><br />        
-        {value.name}
-      </span>           
-    </Link>
-  ));
+  return Object.entries(list.slice(0, 10)).map( ([key, card]) => {
+    var picture = <i className={"large ms " + GetDeckIdentityClass(card)} ></i>;
+    if (card.coverArt) {
+      picture = <img src={card.coverArt} width='100' alt='deck cover art' />;
+    }
+
+    return (
+      <Link className='tile' key={key} to={"/decks/" + card.id}>
+        <div className='container'>
+          <div className='art'>
+            {picture}
+          </div>
+          <span className='title'>{card.name}</span>      
+        </div>
+      </Link>
+    );
+  });
 }
 
 const Overview = ({ decks }) => {
@@ -21,11 +29,12 @@ const Overview = ({ decks }) => {
       <h2>New decks</h2>
       <div className='tiles'>
         <Link to='/decks/import' className='tile'>
-          <span className='title'>
-            <span className='icon-plus large'></span>
-            <br /><br />
-            Import a deck
-            </span>
+          <div className='container'>
+            <div className='art'>
+              <span className='icon-plus large'></span>
+            </div>
+            <span className='title'>Import a deck</span>
+          </div>
         </Link>
       </div>
     </section>

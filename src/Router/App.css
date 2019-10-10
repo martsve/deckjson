@@ -8,6 +8,7 @@ nav a {
   padding: 1rem;
   border-right: 1px solid #ddd;
   text-decoration: none;
+  color: #333;
 }
 
 nav a.active {
@@ -51,6 +52,7 @@ nav a:hover {
   display: block;
   padding: 1rem;
   text-decoration: none;
+  color: #333;
 }
 
 .SideBar a.active {
@@ -62,7 +64,7 @@ nav a:hover {
 }
 
 .Main {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   padding: 1rem;
 }
 
@@ -97,6 +99,8 @@ nav a:hover {
   border: 1px solid #ccc;
   margin: 5px;
 
+  color: #333;
+
   flex: 0 0 1;
   display: flex;
   align-items: center;
@@ -104,10 +108,14 @@ nav a:hover {
 
   text-decoration: none;
 }
-.tile span {
+.tile .container {
   flex: 1 0 auto;
   text-align: center;
   vertical-align: middle;
+}
+
+.tile .art {
+  margin-bottom: 0.5rem;
 }
 
 table {
@@ -166,3 +174,7 @@ td {
   font-size: 75%;
 }
 
+.ms {
+  font-size: 1rem;
+  text-align: center;
+}

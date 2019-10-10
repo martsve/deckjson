@@ -6,6 +6,7 @@ import DeckParse from './DeckParse';
 import ViewDeck from './ViewDeck';
 import NotFound from './ErrorPages';
 import Overview from './Overview';
+import { GetDeckIdentityClass } from './utilities';
 
 const Liste = ({ list }) => {
   return (
@@ -13,7 +14,10 @@ const Liste = ({ list }) => {
       {Object.entries(list).map( ([key, value]) => (
       <li key={key}>
         <NavLink activeClassName='active' to={"/decks/" + value.id}>
-          <span className='title'><span className='icon-folder-empty'></span> {value.name}</span>           
+          <span className='title'>
+            <i className={"ms " + GetDeckIdentityClass(value)} ></i> {" "}
+            {value.name}
+          </span>           
         </NavLink>
       </li>
       ))}

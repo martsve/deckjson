@@ -18,6 +18,11 @@ const reducer = (state, action) => {
             ]
           };
 
+        case 'UPDATEDECK':
+          var newState = { ...state };
+          newState.decks[action.index] = action.deck;
+          return newState;
+
         case 'SAVEDECK':
           return {
             ...state,

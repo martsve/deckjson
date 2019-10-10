@@ -2,18 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NotFound from './ErrorPages';
 import { useDispatch } from "react-redux";
-import { SaveAsFile } from "./utilities";
+import { SaveAsFile, SetIdentity, GetDeckIdentityClass } from "./utilities";
 import { ExportAsMtga, ExportAsTxt, ExportAsDec } from "./DeckExporter";
 import DeckList from "./DeckList";
 
-const ViewDeck = ({ history, match, decks, view }) => {
+const ViewDeck = ({ history, match, decks }) => {
   const dispatch = useDispatch();
 
   var id = match.params.id;
-  var deck = decks.filter(x => x.id === id)[0];
+  var deck = { ...decks.filter(x => x.id === id)[0] };
   if (!deck) {
     return <NotFound />
   }
+
+  var deckIndex = decks.indexOf(decks.filter(x => x.id === id)[0]);
 
   function deleteDeck() {
     dispatch({ type: "DELETEDECK", id: id });
@@ -36,9 +38,35 @@ const ViewDeck = ({ history, match, decks, view }) => {
     SaveAsFile(ExportAsDec(deck), deck.name + ".dek");
   }
 
+  const setCommander = async (index) => {
+    for (var item in deck.cards) {
+      deck.cards[item].commander = undefined;
+    }
+
+    if (index === 0) {
+      dispatch({ type: "UPDATEDECK", deck: deck });
+    }
+    else {
+      deck.cards[index - 1].commander = true;
+      deck = await SetIdentity(deck);
+      dispatch({ type: "UPDATEDECK", index: deckIndex, deck: deck });
+    }
+  }
+
+
   return (
     <>
-    <h1>{deck.name}</h1>
+    <h1><i className={"large ms " + GetDeckIdentityClass(deck)} ></i> {deck.name}</h1>
+
+    <div className='buttons'>
+      Set commander: {" "}
+      <select onChange={async (e) => await setCommander(parseInt(e.target.options[e.target.selectedIndex].value))}>
+        <option value='0'></option>
+        {deck.cards.map( (card, key) => {
+          return <option selected={card.commander ? "selected" : ""} key={key} value={parseInt(key) + 1}>{card.name}</option>;
+        })}
+      </select>
+    </div>
 
     <div className='buttons'>
       <button onClick={exportJson}>
@@ -69,5 +97,4 @@ const ViewDeck = ({ history, match, decks, view }) => {
 
 export default connect(state => ({
   decks: state.decks,
-  view: state.deckView
 }))(ViewDeck);

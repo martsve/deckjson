@@ -1,4 +1,4 @@
-import { CsvToArray, CreateUuid } from '../utilities'
+import { CsvToArray } from '../utilities'
 
 const CreateDeckFromCsv = (text, name) => {
   var firstLine = text.trim().split('\n')[0];
@@ -54,7 +54,6 @@ const CreateDeckFromCsv = (text, name) => {
   }
 
   return {
-    id: CreateUuid(),
     name: name,
     cards: cards.map(x => lineToCard(x))
   };

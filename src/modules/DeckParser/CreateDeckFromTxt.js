@@ -1,5 +1,3 @@
-import { CreateUuid } from '../utilities'
-
 const CreateDeckFromTxt = (text, name) => {
   var lines = text.trim().replace(/\r/ig, '').replace(/\t/ig, ' ').replace(/ +/ig, ' ').split('\n');
   var category = null;
@@ -48,7 +46,6 @@ const CreateDeckFromTxt = (text, name) => {
   });
 
   return {
-    id: CreateUuid(),
     name: name,
     cards: cards.filter(x => x)
   };

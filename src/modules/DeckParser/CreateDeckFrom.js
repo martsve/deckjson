@@ -1,35 +1,39 @@
 import { CreateDeckFromCsv, CreateDeckFromJson, CreateDeckFromTxt, CreateDeckFromDek } from '.'
+import { CreateUuid } from '../utilities'
 
 const CreateDeckFrom = (text, type, name) => {
-  if (type === "csv") {
+  var deck;
+  switch (type) {
+    case "csv":
+      deck = CreateDeckFromCsv(text, name);
+      break;
+
+    case "txt":
+      deck = CreateDeckFromTxt(text, name);
+      break;
+
+    case "json":
+      deck = CreateDeckFromJson(text, name);
+      break;
+
+    case "dec":
+    case "dek":
+      deck = CreateDeckFromDek(text, name);
+      break;
+
+    default:
+      deck = null;
+  }
+
+  if (deck !== null) {
+    deck.id = CreateUuid();
     return {
       success: true,
-      deck: CreateDeckFromCsv(text, name)
+      deck: deck
     };
   }
 
-  if (type === "txt" ) {
-    return {
-      success: true,
-      deck: CreateDeckFromTxt(text, name)
-    };
-  }
-
-  if (type === "dec" || type === "dek") {
-    return {
-      success: true,
-      deck: CreateDeckFromDek(text, name)
-    };
-  }
-
-  if (type === "json") {
-    return {
-      success: true,
-      deck: CreateDeckFromJson(text, name)
-    };
-  }
-
-  return {
+  return { 
     success: false,
     error: "Unsupported format",
   };
