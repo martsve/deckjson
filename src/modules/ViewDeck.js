@@ -50,6 +50,7 @@ const ViewDeck = ({ history, match, decks }) => {
       deck.cards[index - 1].commander = true;
       deck = await SetIdentity(deck);
       dispatch({ type: "UPDATEDECK", index: deckIndex, deck: deck });
+      // TODO: does not cause new render. why?
     }
   }
 
