@@ -18,7 +18,7 @@ const Overview = ({ decks }) => {
       <div className='tiles'>
         <Link to='/decks/import' className='tile'>
           <span className='title'>
-            <span class='icon-plus large'></span>
+            <span className='icon-plus large'></span>
             <br />
             Import a deck
             </span>

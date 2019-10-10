@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { connect } from 'react-redux';
 import { CreateDeckFrom } from './DeckParser'
 import { GetFilenameType } from './utilities'
+import DeckList from "./DeckList";
 
 const DeckParse = ({ history }) => {
   const [name, setName] = useState("");
@@ -60,16 +61,16 @@ const DeckParse = ({ history }) => {
     </section>
 
     {deck ? (<section>
-      <div class='form-group'>
-        <label for='deckNameInput'>Deck name</label>  
+      <div className='form-group'>
+        <label htmlFor='deckNameInput'>Deck name</label>  
         <input id='deckNameInput' value={name} onChange={e => changeName(e.target.value)} />
 
         <button onClick={saveDeck}>
-          <span class='icon-plus'></span>
+          <span className='icon-plus'></span>
         </button>
       </div>
 
-      <pre>{JSON.stringify(deck, null, 2)}</pre>
+      <DeckList deck={deck} />
       </section>) : <></>}
 
     {parseError && <section className='error'>{parseError}</section>}

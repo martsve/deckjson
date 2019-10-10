@@ -44,12 +44,6 @@ nav a:hover {
   border-right: 1px solid #ccc;
 }
 
-.SideBar ul, .SideBar li {
-  padding: 0px;
-  margin: 0px;
-  list-style: none;
-}
-
 .SideBar li {
   border-bottom: 1px solid #ddd;
 }

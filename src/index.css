@@ -25,6 +25,12 @@ input, textarea, button {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul, li {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
 code, pre {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

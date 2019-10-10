@@ -1,51 +1,76 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { NavLink, Switch, Route } from 'react-router-dom'
-import CW from './CounterWidget/CW';
-import DeckParse from './DeckParse';
-import ViewDeck from './ViewDeck';
-import NotFound from './ErrorPages';
-import Overview from './Overview';
+import React, { useState } from 'react';
+import { ExportAsMtga } from './DeckExporter';
 
-const Liste = ({ list }) => {
-  return (
-    <ul>
-      {Object.entries(list).map( ([key, value]) => (
-      <li key={key}>
-        <NavLink activeClassName='active' to={"/decks/" + value.id}>
-          <span className='title'><span class='icon-folder-empty'></span> {value.name}</span>           
-        </NavLink>
-      </li>
-      ))}
-      
-      <li key="import">
-      <NavLink activeClassName='active' to="/decks/import">
-        <span className='title'><span class='icon-plus'></span> Import</span>           
-      </NavLink>
-      </li>
-    </ul>
-  );
+
+function AsTable(deck) {
+  function Headers(columns) {
+    return <>{Object.entries(columns).map(([key, val]) => (
+      <th key={val}>{val}</th>
+    ))}</>
+  }
+
+  function GetVal(val) {
+    if (val === undefined) return "";
+    if (typeof(val) == "boolean") return val ? "X" : "";
+    return val;
+  }
+
+  function Columns(card, columns) {
+    return <>{Object.entries(columns).map(([key, val]) => (
+      <td key={val}>{GetVal(card[val])}</td>
+    ))}</>
+  }
+
+  function Lines(cards, columns) {
+    return <>{Object.entries(cards).map(([key, val]) => (
+      <tr key={key}>{Columns(val, columns)}</tr>
+    ))}</>
+  }
+
+  var columns = new Set();
+  for (var item in deck.cards)  {
+    var keys = Object.keys(deck.cards[item]);
+    for (var i in keys) {
+      columns.add(keys[i]);
+    }
+  } 
+
+  columns = Array.from(columns);
+
+  return <table border='1' width='100%'><thead><tr>{Headers(columns)}</tr></thead><tbody>{Lines(deck.cards, columns)}</tbody></table>
 }
 
-const DeckList = ({ decks }) => {
-  return (
-    <>
-    <div className='SideBar'>
-      <Liste list={decks} />
-    </div>
-    <div className="Main">
-      <Switch>
-        <Route path="/decks/import" component={DeckParse} />
-        <Route path="/decks/cw" component={CW} />
-        <Route path="/decks/:id" component={ViewDeck} />
-        <Route path="/decks" component={Overview} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
-    </>
-  );
+function AsList(deck) {
+  return <pre>{ExportAsMtga(deck)}</pre>;
 }
 
-export default connect(state => ({
-  decks: state.decks,
-}))(DeckList);
+function AsJson(deck) {
+  return  <pre>{JSON.stringify(deck, null, 2)}</pre>;
+}
+
+const DeckList = ({ deck }) => {
+  const [view, setView] = useState("table");
+
+  function GetList(view) {
+    switch (view) {
+      case "table":
+        return AsTable(deck);
+      case "json":
+        return AsJson(deck);
+      default:
+        return AsList(deck);
+    }
+  }
+
+  return (
+    <div className='deckListContainer'>
+      <ul className='view buttons'>
+        <button className={view === "table" ? "active" : ""} onClick={() => setView("table")}>Table</button>
+        <button className={view === "list" ? "active" : ""} onClick={() => setView("list")}>List view</button>
+        <button className={view === "json" ? "active" : ""} onClick={() => setView("json")}>JSON</button>
+      </ul>
+      <div className='list'>{GetList(view)}</div>
+    </div>);
+}
+
+export default DeckList;
