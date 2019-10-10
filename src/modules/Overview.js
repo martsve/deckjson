@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 const Liste = ({ list }) => {
   return Object.entries(list.slice(0,5)).map( ([key, value]) => (
     <Link className='tile' key={key} to={"/decks/" + value.id}>
-      <span className='title'>{value.name}</span>           
+      <span className='title'>
+        <span className='icon-picture large'></span>
+        <br /><br />        
+        {value.name}
+      </span>           
     </Link>
   ));
 }
@@ -19,7 +23,7 @@ const Overview = ({ decks }) => {
         <Link to='/decks/import' className='tile'>
           <span className='title'>
             <span className='icon-plus large'></span>
-            <br />
+            <br /><br />
             Import a deck
             </span>
         </Link>

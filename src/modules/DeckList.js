@@ -37,7 +37,7 @@ function AsTable(deck) {
 
   columns = Array.from(columns);
 
-  return <table border='1' width='100%'><thead><tr>{Headers(columns)}</tr></thead><tbody>{Lines(deck.cards, columns)}</tbody></table>
+  return <table width='100%'><thead><tr>{Headers(columns)}</tr></thead><tbody>{Lines(deck.cards, columns)}</tbody></table>
 }
 
 function AsList(deck) {
@@ -64,7 +64,7 @@ const DeckList = ({ deck }) => {
 
   return (
     <div className='deckListContainer'>
-      <ul className='view buttons'>
+      <ul className='view'>
         <button className={view === "table" ? "active" : ""} onClick={() => setView("table")}>Table</button>
         <button className={view === "list" ? "active" : ""} onClick={() => setView("list")}>List view</button>
         <button className={view === "json" ? "active" : ""} onClick={() => setView("json")}>JSON</button>

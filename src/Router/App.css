@@ -109,3 +109,60 @@ nav a:hover {
   text-align: center;
   vertical-align: middle;
 }
+
+table {
+  border-collapse: collapse;
+}
+td {
+  padding: 0px;
+  margin: 0px;
+}
+
+.deckListContainer {
+  margin-top: 1rem;
+}
+.deckListContainer .view button {
+  background: transparent;
+  border: 0;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+}
+
+.deckListContainer .view button.active {
+  background: #ccd;
+  border: 1px solid #eee;
+  border-bottom: 0;
+}
+
+.deckListContainer .list {
+  background-color: #eef;
+}
+
+.deckListContainer pre {
+  margin: 0;
+  padding: 1rem;
+}
+
+.deckListContainer table {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.deckListContainer thead tr {
+  text-transform: uppercase;
+  font-size: 90%;
+  font-weight: bold;
+  background-color: #ccd;
+  text-align: left;
+}
+
+.deckListContainer tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.deckListContainer td, .deckListContainer th {
+  padding: 0.5rem;
+  font-size: 75%;
+}
+

@@ -56,12 +56,10 @@ const ViewDeck = ({ history, match, decks, view }) => {
       <button onClick={exportDec}>
         Export deck as MTGO .dek
       </button>
-    </div>
 
-    <div className='buttons'>
-    <button onClick={deleteDeck}>
-      Delete deck
-    </button>
+      <button onClick={deleteDeck}>
+        <span className='icon-trash-empty'></span>
+      </button>
     </div>
 
     <DeckList deck={deck} />
