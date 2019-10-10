@@ -1,56 +1,39 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-html, body, #root {
-  height: 100%;
-  margin: 0;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-}
-
 nav {
   background: #eee;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 }
 
 nav a {
   display: inline-block;
   padding: 1rem;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #ddd;
+  text-decoration: none;
 }
 
 nav a.active {
-  background: #eef;
+  text-shadow: 1px 0px 0px black;
+  text-decoration: underline;
 }
 
 nav a:hover {
   background: #ddd !important;
 }
 
-section {
-  margin-bottom: 2rem;
-}
-section:last-child {
-  margin-bottom: unset;
+
+.large::before, .large::after {
+  font-size: 2.5rem;
 }
 
-.Body {
-  flex: 1 1 auto;
-  display: flex;
+.medium::before, .medium::after {
+  font-size: 1.3rem;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+.form-group label {
+  display: block;
+  font-weight: bold;
 }
 
 .SideBar {
@@ -61,15 +44,19 @@ section:last-child {
   border-right: 1px solid #ccc;
 }
 
-.SideBar ul, .SideBar .li {
+.SideBar ul, .SideBar li {
   padding: 0px;
   margin: 0px;
   list-style: none;
 }
 
+.SideBar li {
+  border-bottom: 1px solid #ddd;
+}
 .SideBar a {
   display: block;
   padding: 1rem;
+  text-decoration: none;
 }
 
 .SideBar a.active {
@@ -85,12 +72,6 @@ section:last-child {
   padding: 1rem;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1rem;
-}
-
 .row {
   display: flex;
   align-items: center;
@@ -104,10 +85,6 @@ h1,h2,h3,h4,h5,h6 {
 .buttons button {
   margin-right: 1rem;
   margin-top: 1rem;
-}
-
-.error {
-  color: red;
 }
 
 .tiles {
@@ -137,25 +114,4 @@ h1,h2,h3,h4,h5,h6 {
   flex: 1 0 auto;
   text-align: center;
   vertical-align: middle;
-}
-
-@media (max-width: 700px) {
-  .col {
-    flex: 0 0 100%;
-  }
-  .sm-block {
-    display: block !important;
-  }
-  .sm-flex {
-    display: flex;
-  }
-  .sm-flex > * {
-    flex: 1 0 auto;
-  }
-}
-
-@media (min-width: 701px) {
-  .col {
-    flex: 1 0 auto;
-  }
 }

@@ -53,21 +53,26 @@ const DeckParse = ({ history }) => {
   return (
     <>
     <h1>Import a new deck</h1>
+    <section>
     <form key='inputform' action='#' onSubmit={() => false}>
       <input key='fileinput' type='file' id='fileinput' onChange={readFile} />
     </form>
+    </section>
 
-    {deck ? (<div key='info'>
-      <input value={name} onChange={e => changeName(e.target.value)} />
+    {deck ? (<section>
+      <div class='form-group'>
+        <label for='deckNameInput'>Deck name</label>  
+        <input id='deckNameInput' value={name} onChange={e => changeName(e.target.value)} />
 
-      <button onClick={saveDeck}>
-        Save to collection
-      </button>
+        <button onClick={saveDeck}>
+          <span class='icon-plus'></span>
+        </button>
+      </div>
 
       <pre>{JSON.stringify(deck, null, 2)}</pre>
-    </div>) : <></>}
+      </section>) : <></>}
 
-    {parseError && <p className='error'>{parseError}</p>}
+    {parseError && <section className='error'>{parseError}</section>}
     </>
   );
 }

@@ -17,7 +17,11 @@ const Overview = ({ decks }) => {
       <h2>New decks</h2>
       <div className='tiles'>
         <Link to='/decks/import' className='tile'>
-          <span className='title'>Import a deck</span>
+          <span className='title'>
+            <span class='icon-plus large'></span>
+            <br />
+            Import a deck
+            </span>
         </Link>
       </div>
     </section>

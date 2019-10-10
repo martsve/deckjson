@@ -5,19 +5,19 @@ import DeckList from '../modules/DeckList';
 import NotFound from '../modules/ErrorPages';
 
 import { Provider } from 'react-redux'
-import { Route, BrowserRouter as Router, Switch, NavLink  } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch, NavLink, Redirect  } from 'react-router-dom'
 import { store } from '../store';
 
-const IndexPage = () => (<div className="Main"><h1>Index</h1></div>);
+const IndexPage = () => (<Redirect to="/decks/" />);
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <nav className='sm-flex'>
-          <NavLink exact activeClassName='active' to="/">Home</NavLink>
+          <NavLink exact activeClassName='active' to="/"><span class='icon-home medium'></span></NavLink>
           <NavLink activeClassName='active' to="/decks/">Decks</NavLink>
-          <NavLink activeClassName='active' to="/config">Configuration</NavLink>
+          <NavLink activeClassName='active' to="/config"><span class='icon-cog medium'></span></NavLink>
         </nav>
         <div className="Body">
           <Switch>

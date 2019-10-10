@@ -13,14 +13,14 @@ const Liste = ({ list }) => {
       {Object.entries(list).map( ([key, value]) => (
       <li key={key}>
         <NavLink activeClassName='active' to={"/decks/" + value.id}>
-          <span className='title'>{value.name}</span>           
+          <span className='title'><span class='icon-folder-empty'></span> {value.name}</span>           
         </NavLink>
       </li>
       ))}
       
       <li key="import">
       <NavLink activeClassName='active' to="/decks/import">
-        <span className='title'>+ Import</span>           
+        <span className='title'><span class='icon-plus'></span> Import</span>           
       </NavLink>
       </li>
     </ul>
