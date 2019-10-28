@@ -55,7 +55,7 @@ html, body, #root {
   display: flex;
 }
 
-input[type=file] {
+input[type=file], label {
   cursor: pointer;
 }
 

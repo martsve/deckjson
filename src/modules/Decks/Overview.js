@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { GetDeckIdentityClass } from './utilities';
+import { GetDeckIdentityClass } from '../utilities';
+
 const Liste = ({ list }) => {
   return Object.entries(list.slice(0, 10)).map( ([key, card]) => {
     var picture = <i className={"large ms " + GetDeckIdentityClass(card)} ></i>;

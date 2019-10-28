@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NotFound from './ErrorPages';
+import NotFound from '../ErrorPages';
 import { useDispatch } from "react-redux";
-import { SaveAsFile, SetIdentity, GetDeckIdentityClass } from "./utilities";
-import { ExportAsMtga, ExportAsTxt, ExportAsDec } from "./DeckExporter";
+import { SaveAsFile, SetIdentity, GetDeckIdentityClass } from "../utilities";
+import { ExportAsMtga, ExportAsTxt, ExportAsDec } from "../DeckExporter";
 import DeckList from "./DeckList";
 
 const ViewDeck = ({ history, match, decks }) => {

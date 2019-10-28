@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Switch, Route } from 'react-router-dom'
-import CW from './CounterWidget/CW';
 import DeckParse from './DeckParse';
 import ViewDeck from './ViewDeck';
-import NotFound from './ErrorPages';
+import NotFound from '../ErrorPages';
 import Overview from './Overview';
-import { GetDeckIdentityClass } from './utilities';
+import { GetDeckIdentityClass } from '../utilities';
 
 const Liste = ({ list }) => {
   return (
@@ -31,7 +30,7 @@ const Liste = ({ list }) => {
   );
 }
 
-const DeckOverview = ({ decks }) => {
+const Index = ({ decks }) => {
   return (
     <>
     <div className='SideBar'>
@@ -40,7 +39,6 @@ const DeckOverview = ({ decks }) => {
     <div className="Main">
       <Switch>
         <Route path="/decks/import" component={DeckParse} />
-        <Route path="/decks/cw" component={CW} />
         <Route path="/decks/:id" component={ViewDeck} />
         <Route path="/decks" component={Overview} />
         <Route component={NotFound} />
@@ -52,4 +50,4 @@ const DeckOverview = ({ decks }) => {
 
 export default connect(state => ({
   decks: state.decks,
-}))(DeckOverview);
+}))(Index);

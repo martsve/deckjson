@@ -20,7 +20,7 @@ const reducer = (state, action) => {
 
         case 'UPDATEDECK':
           var newState = { ...state };
-          newState.decks[action.index] = action.deck;
+          newState.decks[action.index] = { ...action.deck };
           return newState;
 
         case 'SAVEDECK':
@@ -31,6 +31,12 @@ const reducer = (state, action) => {
               action.deck
             ]
           };
+
+        case 'IMPORTCOLLECTION':
+            return {
+              ...state,
+              decks: action.decks
+            };
 
         case 'RESET':
             localStorage.clear();

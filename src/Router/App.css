@@ -20,9 +20,9 @@ nav a:hover {
   background: #ddd !important;
 }
 
-
 .large::before, .large::after {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  line-height: 73px;
 }
 
 .medium::before, .medium::after {
@@ -94,10 +94,11 @@ nav a:hover {
   width: 150px;
   height: 150px;
 
-  padding: 1rem; 
+  padding: 1rem 0rem; 
   background: #eef;
   border: 1px solid #ccc;
   margin: 5px;
+  padding: 5px;
 
   color: #333;
 
@@ -112,11 +113,21 @@ nav a:hover {
   flex: 1 0 auto;
   text-align: center;
   vertical-align: middle;
+  width: 100%;
 }
 
 .tile .art {
   margin-bottom: 0.5rem;
+  height: 73px;
+  overflow: hidden;
 }
+
+.tile .title { 
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
 
 table {
   border-collapse: collapse;

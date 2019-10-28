@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExportAsMtga } from './DeckExporter';
+import { ExportAsMtga } from '../DeckExporter';
 
 
 function AsTable(deck) {

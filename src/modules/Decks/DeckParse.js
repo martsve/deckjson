@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { connect } from 'react-redux';
-import { CreateDeckFrom } from './DeckParser'
-import { GetFilenameType } from './utilities'
+import { CreateDeckFrom } from '../DeckParser'
+import { GetFilenameType } from '../utilities'
 import DeckList from "./DeckList";
 
 const DeckParse = ({ history }) => {
