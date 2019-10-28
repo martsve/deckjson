@@ -189,3 +189,18 @@ td {
   font-size: 1rem;
   text-align: center;
 }
+
+
+tr td .edit {
+  padding-left: 2rem;
+}
+
+tr td .edit b {
+  display: inline-block;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+input.invalid {
+  border: 1px solid red;
+}

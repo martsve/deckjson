@@ -38,7 +38,7 @@ const lagFacts = (decks) => {
 
   popName = histo(cards, x => x.name);
   i = 1;
-  for (var item in popName.slice(0, 20)) {
+  for (item in popName.slice(0, 20)) {
     liste.push({ title: "Most popular card #" + i++, text: popName[item][0] + ', ' + popName[item][1] + ' times' });
   }
 

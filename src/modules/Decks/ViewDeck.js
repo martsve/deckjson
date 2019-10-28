@@ -54,6 +54,9 @@ const ViewDeck = ({ history, match, decks }) => {
     }
   }
 
+  const saveDeck = (deck) => {
+    dispatch({ type: "UPDATEDECK", index: deckIndex, deck: deck });
+  };
 
   return (
     <>
@@ -64,6 +67,7 @@ const ViewDeck = ({ history, match, decks }) => {
       <select onChange={async (e) => await setCommander(parseInt(e.target.options[e.target.selectedIndex].value))}>
         <option value='0'></option>
         {deck.cards.map( (card, key) => {
+          console.log(card);
           return <option selected={card.commander ? "selected" : ""} key={key} value={parseInt(key) + 1}>{card.name}</option>;
         })}
       </select>
@@ -91,7 +95,7 @@ const ViewDeck = ({ history, match, decks }) => {
       </button>
     </div>
 
-    <DeckList deck={deck} />
+    <DeckList deck={deck} editable={true} setDeck={saveDeck} />
     </>
   );
 }
