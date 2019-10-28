@@ -22,6 +22,42 @@ const lagStats = (decks) => {
   return liste;
 };
 
+const lagFacts = (decks) => {
+  var liste = [];
+  var cards = decks.reduce((n, x) => {
+    return n.concat(x.cards);
+  }, []);
+
+  var popName = histo(cards, x => x.set);
+  var i = 1;
+  for (var item in popName.slice(0, 3)) {
+    liste.push({ title: "Most popular set #" + i++, text: popName[item][0] + ', ' + popName[item][1] + ' cards' });
+  }
+
+  return liste;
+};
+
+const histo = (list, callback) => {
+  var dict = list.reduce((n, x) => {
+    var key = callback(x);
+    if (key !== undefined) {
+      n[key] = 1 + (n[key] ? n[key] : 0);
+    }
+    return n;
+  }, {});
+
+  var items = Object.keys(dict).map(function(key) {
+    return [key, dict[key]];
+  });
+  
+  // Sort the array based on the second element
+  items.sort(function(first, second) {
+    return second[1] - first[1];
+  });
+
+  return items;
+}
+
 const set = (list, callback) => Array.from(list.reduce((n, x) => {
   n.add(callback(x));
   return n;
@@ -48,6 +84,15 @@ const Liste = ({ decks }) => {
   });
 }
 
+const Facts = ({ decks }) => {
+  var list = lagFacts(decks);
+  return <ul>{Object.entries(list).map( ([i, item]) => {
+    return (     
+        <li key={i}><b>{item.title}:</b> {item.text}</li>
+    );
+  })}</ul>;
+}
+
 export const Summary = ({ decks }) => {
   return (
     <>
@@ -56,6 +101,8 @@ export const Summary = ({ decks }) => {
       <div className="tiles">
         <Liste decks={decks} />
       </div>
+      <br />
+      <Facts decks={decks} />
     </section>
     </>
   );
