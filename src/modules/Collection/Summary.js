@@ -6,12 +6,18 @@ const lagStats = (decks) => {
     return n.concat(x.cards);
   }, []);
 
+  var cardCount = sum(cards, x => x.count);
+  var foilCount = sum(cards, x => (x.foil && !x.proxy ? 1 : 0) * x.count);
+
   liste.push({ title: "Decks", icon: "thumbs-up", text: decks.length });
-  liste.push({ title: "Cards", icon: "smile", text: sum(cards, x => x.count) });
-  liste.push({ title: "Proxies", icon: "thumbs-down", text: count(cards, x => x.proxy) });
-  liste.push({ title: "Value", icon: "frown", text: Math.round(sum(cards, x => x.proxy ? 0 : x.price), 0) + '$' });
-  liste.push({ title: "Proxy value", icon: "frown", text: Math.round(sum(cards, x => x.proxy ? x.price : 0), 0) + '$' });
+  liste.push({ title: "Cards", icon: "smile", text: cardCount });
+  liste.push({ title: "Proxies", icon: "thumbs-down", text: sum(cards, x => (x.proxy ? 1 : 0) * x.count) });
+  liste.push({ title: "Value", icon: "frown", text: Math.round(sum(cards, x => x.proxy ? 0 : x.price * x.count)) + '$' });
+  liste.push({ title: "Proxy value", icon: "frown", text: Math.round(sum(cards, x => x.proxy ? x.price * x.count : 0)) + '$' });
   liste.push({ title: "Unique cards", icon: "meh", text: set(cards, x => x.name).length });
+  liste.push({ title: "Foils", icon: "thumbs-up", text: foilCount });
+  liste.push({ title: "Foil price", icon: "thumbs-up", text: Math.round(sum(cards, x => !x.proxy && x.foil ? x.price : 0)) + '$' });
+  liste.push({ title: "Foiled", icon: "thumbs-up", text: Math.round(100.0 * foilCount / cardCount) + '%' });
 
   return liste;
 };
@@ -20,10 +26,6 @@ const set = (list, callback) => Array.from(list.reduce((n, x) => {
   n.add(callback(x));
   return n;
 }, new Set()));
-
-const count = (list, callback) => list.reduce((n, x) => {
-  return n + (callback(x) ? 1 : 0);
-}, 0);
 
 const sum = (list, callback) => list.reduce((n, x) => {
   var val = callback(x);
