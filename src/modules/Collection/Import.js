@@ -83,7 +83,7 @@ const Import = ({ history, decks }) => {
     <p>Import a collection of DeckJson decks. </p>
     <pre>{'{ "decks": [...] }'}</pre>
     <p>Tetst files can be found at <a href='https://github.com/martsve/deckjson/'>Github</a>. 
-      (<a href='https://github.com/martsve/deckjson/tree/master/test/Collection.json'>Collection 1</a>)
+      (<a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/Collection.json'>Collection 1</a>)
     </p>
 
     <form key='inputform' action='#' onSubmit={() => false}>

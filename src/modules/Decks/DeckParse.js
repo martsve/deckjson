@@ -58,11 +58,11 @@ const DeckParse = ({ history }) => {
 
     <p>Import most standard deck formats. Use .txt file extension if you are unsure. Tetst files can be found at <a href='https://github.com/martsve/deckjson/'>Github</a>. 
       (
-      <a href='https://github.com/martsve/deckjson/tree/master/test/delver.csv'>Delver lens csv</a>,
-      <a href='https://github.com/martsve/deckjson/tree/master/test/arena.txt'>Arena list</a>,
-      <a href='https://github.com/martsve/deckjson/tree/master/test/mtgo.txt'>MTGO list</a>,
-      <a href='https://github.com/martsve/deckjson/tree/master/test/misc.dec'>Misc dec/dek file</a>,
-      <a href='https://github.com/martsve/deckjson/tree/master/test/strange.txt'>Guess file</a>,
+      <a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/delver.csv'>Delver lens csv</a>,
+      <a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/arena.txt'>Arena list</a>,
+      <a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/mtgo.txt'>MTGO list</a>,
+      <a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/misc.dec'>Misc dec/dek file</a>,
+      <a href='https://raw.githubusercontent.com/martsve/deckjson/master/test/strange.txt'>Guess file</a>,
       )
     </p>
 
