@@ -30,8 +30,16 @@ const lagFacts = (decks) => {
 
   var popName = histo(cards, x => x.set);
   var i = 1;
-  for (var item in popName.slice(0, 3)) {
+  for (var item in popName.slice(0, 5)) {
     liste.push({ title: "Most popular set #" + i++, text: popName[item][0] + ', ' + popName[item][1] + ' cards' });
+  }
+
+  liste.push({});
+
+  popName = histo(cards, x => x.name);
+  i = 1;
+  for (var item in popName.slice(0, 20)) {
+    liste.push({ title: "Most popular card #" + i++, text: popName[item][0] + ', ' + popName[item][1] + ' times' });
   }
 
   return liste;
@@ -41,7 +49,7 @@ const histo = (list, callback) => {
   var dict = list.reduce((n, x) => {
     var key = callback(x);
     if (key !== undefined) {
-      n[key] = 1 + (n[key] ? n[key] : 0);
+      n[key] = x.count + (n[key] ? n[key] : 0);
     }
     return n;
   }, {});
@@ -87,6 +95,7 @@ const Liste = ({ decks }) => {
 const Facts = ({ decks }) => {
   var list = lagFacts(decks);
   return <ul>{Object.entries(list).map( ([i, item]) => {
+    if (!item.title) return <li>&nbsp;</li>;
     return (     
         <li key={i}><b>{item.title}:</b> {item.text}</li>
     );
