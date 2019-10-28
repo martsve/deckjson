@@ -28,13 +28,20 @@ const CreateDeckFromTxt = (text, name) => {
     var count = parseInt(parts[0].replace(/x/ig, ""));
     parts.shift();
     var name = parts.join(' ');
-    var match = name.match(/(.*?) \(([a-z]+)\) ([a-z0-9]+)$/i);
+    var match = name.match(/(.*?) \(([a-z0-9]+)\) ([a-z0-9]+)$/i);
 
     if (match) {
       name = match[1];
       edition = match[2];
       collectors = match[3];
     }
+
+    match = name.match(/(.*?) \(([a-z0-9]+)\)$/i);
+    if (match) {
+      name = match[1];
+      edition = match[2];
+    }
+
     return {
       count: count,
       name: name,

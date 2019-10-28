@@ -79,6 +79,13 @@ const Import = ({ history, decks }) => {
     <>
     <h1>Import a new collection</h1>
     <section>
+
+    <p>Import a collection of DeckJson decks. </p>
+    <pre>{'{ "decks": [...] }'}</pre>
+    <p>Tetst files can be found at <a href='https://github.com/martsve/deckjson/'>Github</a>. 
+      (<a href='https://github.com/martsve/deckjson/tree/master/test/Collection.json'>Collection 1</a>)
+    </p>
+
     <form key='inputform' action='#' onSubmit={() => false}>
       <div className='form-group'>
 
